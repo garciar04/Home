@@ -220,7 +220,7 @@ function vMore(){
   <h2>Key dates</h2><div class="card">${KEYDATES.map(k=>`<div class="chk"><b style="width:70px;flex:none">${fmtD(k[0],{month:'short',day:'numeric'})}</b><span>${k[1]} ${daysBetween(TODAY,k[0])>=0?`<small>(in ${daysBetween(TODAY,k[0])} d)</small>`:''}</span></div>`).join('')}</div>
   <h2>Non-negotiables</h2><div class="card">${['Easy means easy: HR 145 alert on, or set the treadmill and don’t touch it.','No shoe does a long run until it has 50+ easy miles.','No alcohol the night before a long run.','Knee rules override the Daily Log, every time.','Weight: modest deficit only in phases 2–3 while mileage is low; not during peak or taper.'].map(x=>`<div class="chk"><span>✅ ${x}</span></div>`).join('')}</div>
   <h2>Race history</h2><div class="card"><table>${HIST.map(h=>`<tr><td><b>${h[0]}</b></td><td>${h[1]}<br><small>${h[4]}</small></td><td>${h[2]}<br><small>${h[3]}/mi</small></td></tr>`).join('')}</table></div>
-  <h2>Your data</h2><div class="card"><p class="sub">Everything is stored on this device only. Export a backup now and then.</p><button class="btn" data-act="export">Export backup (JSON)</button><button class="btn ghost" data-act="import">Import backup</button><input type="file" id="imp" accept=".json" hidden><button class="btn ghost" style="color:var(--bad)" data-act="reset">Erase all logged data</button></div>`}
+  <h2>Your data</h2><div class="card"><p class="sub">Everything is stored on this device only. Export a backup now and then.</p><button class="btn" data-act="export">Copy backup (JSON)</button><button class="btn ghost" data-act="import">Import backup</button><textarea id="expbox" hidden readonly style="margin-top:8px"></textarea><input type="file" id="imp" accept=".json" hidden><button class="btn ghost" style="color:var(--bad)" data-act="reset">Erase all logged data</button></div>`}
 window.conv=()=>{const s=secs($('#cv_p').value);$('#cv_m').value=s?r1(3600/s):''};
 window.conv2=()=>{const m=num($('#cv_m').value);$('#cv_p').value=m?fmtT(3600/m):''};
 
@@ -251,7 +251,7 @@ document.addEventListener('click',ev=>{const t=ev.target.closest('[data-act]');i
   else if(a==='selfcheck'){const n=$('#sc_note').value.trim();if(n){S.selfcheck[TODAY]=n;save();render(1)}}
   else if(a==='episode'){const x=$('#ep_t').value.trim();if(x){S.episodes.push({d:TODAY,t:x,k:$('#ep_k').value||'–'});save();render(1)}}
   else if(a==='strlog'){const ex=$('#sl_e').value.trim();if(!ex)return;S.strength.push({d:TODAY,s:$('#sl_s').value,ex,sets:$('#sl_sets').value,reps:$('#sl_reps').value,w:$('#sl_w').value,k:$('#sl_k').value});save();render(1)}
-  else if(a==='export'){const b=new Blob([JSON.stringify(S,null,1)],{type:'application/json'}),u=URL.createObjectURL(b),l=document.createElement('a');l.href=u;l.download='50k-backup-'+TODAY+'.json';l.click()}
+  else if(a==='export'){const j=JSON.stringify(S),box=$('#expbox');box.hidden=false;box.value=j;box.select();try{navigator.clipboard.writeText(j).then(()=>toast('Copied backup'),()=>{})}catch(e){}}
   else if(a==='import')$('#imp').click();
   else if(a==='reset'){if(confirm('Erase ALL logged data on this device?')){localStorage.removeItem(KEY);location.reload()}}
 });
