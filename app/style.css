@@ -1,0 +1,33 @@
+:root{--bg:#0f1417;--card:#182026;--card2:#1f2a31;--tx:#e8eef1;--mut:#8ea0aa;--ac:#2dd4a3;--warn:#f5b942;--bad:#ef5b5b;--line:#2a3740;--blue:#5aa9ff}
+@media(prefers-color-scheme:light){:root{--bg:#f3f6f7;--card:#fff;--card2:#eef3f5;--tx:#14202a;--mut:#5d6f7a;--ac:#0d9f78;--warn:#b7791f;--bad:#d03b3b;--line:#d8e1e5;--blue:#2563c9}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding-bottom:78px}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;position:sticky;top:0;background:var(--bg);z-index:5;border-bottom:1px solid var(--line)}
+.brand{font-weight:800;font-size:18px}.brand span{color:var(--ac)}.hdr{font-size:12px;color:var(--mut);text-align:right}
+main{max-width:720px;margin:0 auto;padding:14px 16px}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:6;overflow-x:auto}
+nav button{flex:1;min-width:64px;background:none;border:0;color:var(--mut);padding:9px 4px;font-size:11px;cursor:pointer}
+nav button b{display:block;font-size:18px;font-weight:400}nav button.on{color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:18px 0 8px}h3{margin:0 0 6px;font-size:17px}
+.big{font-size:34px;font-weight:800;line-height:1}.sub{color:var(--mut);font-size:13px}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:90px}
+.stat{background:var(--card2);border-radius:10px;padding:10px}.stat b{display:block;font-size:22px}.stat span{font-size:12px;color:var(--mut)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--card2);color:var(--mut);margin-right:4px}
+.tag.run{background:var(--ac);color:#04231a}.tag.warn{background:var(--warn);color:#2b1c00}.tag.bad{background:var(--bad);color:#fff}
+.alert{border-left:4px solid var(--warn);background:var(--card2);padding:10px 12px;border-radius:8px;margin-bottom:12px}.alert.bad{border-color:var(--bad)}.alert.ok{border-color:var(--ac)}
+label{display:block;font-size:12px;color:var(--mut);margin:8px 0 3px}
+input,select,textarea{width:100%;background:var(--card2);color:var(--tx);border:1px solid var(--line);border-radius:8px;padding:10px;font:inherit}
+textarea{min-height:60px}
+button.btn{background:var(--ac);color:#04231a;border:0;border-radius:10px;padding:11px 16px;font-weight:700;font-size:15px;cursor:pointer;width:100%;margin-top:10px}
+button.btn.ghost{background:var(--card2);color:var(--tx)}
+.knee{display:flex;gap:4px}.knee button{flex:1;padding:10px 0;border:1px solid var(--line);background:var(--card2);color:var(--tx);border-radius:8px;font-weight:700}
+.knee button.on{color:#fff}.k0,.k1,.k2{--c:var(--ac)}.k3{--c:var(--warn)}.k4,.k5,.k6,.k7,.k8,.k9,.k10{--c:var(--bad)}.knee button.on{background:var(--c);border-color:var(--c)}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:6px 4px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase}
+.bar{height:8px;background:var(--card2);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line)}.chk input{width:22px;height:22px;flex:none;margin:0}
+.chk.done span{text-decoration:line-through;color:var(--mut)}
+.day{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}.day .dt{width:54px;flex:none;font-size:12px;color:var(--mut)}.day.today{background:var(--card2);margin:0 -8px;padding:9px 8px;border-radius:8px}
+.day .mi{margin-left:auto;font-weight:700;white-space:nowrap}
+svg text{fill:var(--mut);font-size:10px}
+details{margin-bottom:8px}summary{cursor:pointer;font-weight:600;padding:6px 0}
+small{color:var(--mut)}
